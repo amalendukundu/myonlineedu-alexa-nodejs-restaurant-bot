@@ -1,0 +1,18 @@
+{
+  "name": "restaurant-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "alexa": {
+    "applicationId": "amzn1.ask.skill.48e05263-513d-4f70-ae04-48ef0c87a88b"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "alexa-app": "^4.2.3",
+    "mysql": "^2.17.1"
+  }
+}

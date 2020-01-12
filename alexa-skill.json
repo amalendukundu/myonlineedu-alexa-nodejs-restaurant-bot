@@ -1,0 +1,289 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "dummy restaurant",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "MakeReservation",
+                    "slots": [
+                        {
+                            "name": "NumberOfPeople",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "{NumberOfPeople} people",
+                                "reservation for {NumberOfPeople} person",
+                                "there will be {NumberOfPeople} people"
+                            ]
+                        },
+                        {
+                            "name": "ReservationDate",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "make reservation on {ReservationDate}",
+                                "on {ReservationDate}"
+                            ]
+                        },
+                        {
+                            "name": "ReservationTime",
+                            "type": "AMAZON.TIME",
+                            "samples": [
+                                "at {ReservationTime}",
+                                "i want to book at {ReservationTime}"
+                            ]
+                        },
+                        {
+                            "name": "PersonName",
+                            "type": "AMAZON.FirstName",
+                            "samples": [
+                                "{PersonName}"
+                            ]
+                        },
+                        {
+                            "name": "RestaurantLocation",
+                            "type": "RestLocationCity",
+                            "samples": [
+                                "location {RestaurantLocation}",
+                                "city {RestaurantLocation}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "i want to book a table at {RestaurantLocation} on {ReservationDate} at {ReservationTime} for name {PersonName}",
+                        "i want to book a table",
+                        "i want to book a table for {NumberOfPeople} person on {ReservationDate} at {ReservationTime} with person name {PersonName}",
+                        "please make reservation for {NumberOfPeople} on {ReservationDate} at {ReservationTime} for name {PersonName}",
+                        "i want to make reservation on {ReservationDate} at {ReservationTime} for {NumberOfPeople}",
+                        "i want to make a reservation for {NumberOfPeople} people",
+                        "i want to make a reservation"
+                    ]
+                },
+                {
+                    "name": "CancelReservation",
+                    "slots": [
+                        {
+                            "name": "ReservationNumber",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "resrevation number {ReservationNumber}",
+                                "{ReservationNumber}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "i want to cancel a rservation number {ReservationNumber}",
+                        "i want to cancel a reservation"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "RestLocationCity",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Bangalore"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Delhi"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Mumbai",
+                                "synonyms": [
+                                    "bombay"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Kolkata",
+                                "synonyms": [
+                                    "calcutta"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "MakeReservation",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "NumberOfPeople",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1262447125309.150790847912"
+                            }
+                        },
+                        {
+                            "name": "ReservationDate",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1262447125309.1090485670025"
+                            }
+                        },
+                        {
+                            "name": "ReservationTime",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1262447125309.361753385631"
+                            }
+                        },
+                        {
+                            "name": "PersonName",
+                            "type": "AMAZON.FirstName",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1262447125309.637717914445"
+                            }
+                        },
+                        {
+                            "name": "RestaurantLocation",
+                            "type": "RestLocationCity",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1262447125309.398486979255"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1262447125309.398486979255.364813707133"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "CancelReservation",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "ReservationNumber",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1001939760864.1147894293098"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1262447125309.150790847912",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "how many person?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "How many people will be there?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1262447125309.1090485670025",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what is the reservation date?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "which date?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1262447125309.361753385631",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what time do you want to book?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "at what time?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1262447125309.637717914445",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "on which name do you want to make the reservation?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1262447125309.398486979255",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "for which location city?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1262447125309.398486979255.364813707133",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I am sorry, we do not have any branch at {RestaurantLocation} . We operate at Kolkata, Delhi, Mumbai and Bangalore. Please tell me city name."
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1001939760864.1147894293098",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "what is the reservation number you want to cancel?"
+                    }
+                ]
+            }
+        ]
+    }
+}
