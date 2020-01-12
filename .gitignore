@@ -1,2 +1,4 @@
+package-lock.json
 node_modules
 apps/restaurant-bot/node_modules
+apps/restaurant-bot/package-lock.json
